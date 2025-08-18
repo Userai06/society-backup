@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark mode configuration */
-@layer base {
-  html {
-    @apply dark;
-  }
-}
-
 /* Animation keyframes */
 @keyframes fadeInUp {
   from {
