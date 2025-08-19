@@ -20,10 +20,10 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement, canEd
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-600 p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-500 group">
+    <div className="bg-gray-800 dark:bg-gray-900 rounded-xl shadow-lg border border-gray-600 dark:border-gray-700 p-4 sm:p-6 transition-all duration-300">
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1 min-w-0">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2 leading-tight">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-100 dark:text-gray-200 mb-2 leading-tight">
             {announcement.title}
           </h3>
         </div>
@@ -35,14 +35,14 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement, canEd
             <div className="flex space-x-1">
               <button
                 onClick={() => onEdit?.(announcement)}
-                className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md transition-all duration-200"
+                className="p-1.5 text-gray-400 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-300 hover:bg-blue-900/20 dark:hover:bg-blue-800/20 rounded-md transition-all duration-200"
                 title="Edit announcement"
               >
                 <Edit className="h-4 w-4" />
               </button>
               <button
                 onClick={() => onDelete?.(announcement.id)}
-                className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-all duration-200"
+                className="p-1.5 text-gray-400 dark:text-gray-300 hover:text-red-400 dark:hover:text-red-300 hover:bg-red-900/20 dark:hover:bg-red-800/20 rounded-md transition-all duration-200"
                 title="Delete announcement"
               >
                 <Trash2 className="h-4 w-4" />
@@ -54,34 +54,37 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement, canEd
       
       <div className="space-y-3">
         <div>
-          <h4 className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
-            Description
+          <h4 className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">
+            Details
           </h4>
-          <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
-            {announcement.content}
-          </p>
+          <div className="text-gray-300 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-2">
+            <p><span className="font-medium">Title:</span> {announcement.title}</p>
+            <p><span className="font-medium">Description:</span> {announcement.content}</p>
+            <p><span className="font-medium">Venue:</span> {announcement.venue || 'Not specified'}</p>
+            <p><span className="font-medium">Time:</span> {announcement.time || 'Not specified'}</p>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-200 dark:border-gray-600">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-600 dark:border-gray-700">
           <div className="flex items-center space-x-2">
-            <User className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+            <User className="h-4 w-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+              <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
                 Posted by
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 truncate">
+              <p className="text-sm text-gray-300 dark:text-gray-400 truncate">
                 {announcement.createdBy}
               </p>
             </div>
           </div>
           
           <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+            <Calendar className="h-4 w-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+              <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
                 Date
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
+              <p className="text-sm text-gray-300 dark:text-gray-400">
                 {announcement.createdAt.toLocaleDateString()}
               </p>
             </div>
