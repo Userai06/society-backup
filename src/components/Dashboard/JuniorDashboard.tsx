@@ -127,7 +127,10 @@ const JuniorDashboard: React.FC = () => {
                 <div className="space-y-4">
                   {announcements.map(announcement => (
                     <div key={announcement.id} className="transform transition-all duration-200">
-                      <AnnouncementCard announcement={announcement} />
+                      <AnnouncementCard 
+                        announcement={announcement} 
+                        canEdit={false}
+                      />
                     </div>
                   ))}
                 </div>

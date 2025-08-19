@@ -165,7 +165,24 @@ const SeniorDashboard: React.FC = () => {
                 <div className="space-y-4">
                   {announcements.map(announcement => (
                     <div key={announcement.id} className="transform transition-all duration-200 hover:scale-[1.02]">
-                      <AnnouncementCard announcement={announcement} />
+                      <AnnouncementCard 
+                        announcement={announcement} 
+                        canEdit={true}
+                        onEdit={(announcement) => {
+                          // TODO: Implement edit functionality
+                          console.log('Edit announcement:', announcement);
+                        }}
+                        onDelete={async (announcementId) => {
+                          if (window.confirm('Are you sure you want to delete this announcement?')) {
+                            try {
+                              await deleteDoc(doc(db, 'announcements', announcementId));
+                              fetchAnnouncements();
+                            } catch (error) {
+                              console.error('Error deleting announcement:', error);
+                            }
+                          }
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
