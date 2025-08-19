@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, User, Edit, Trash2 } from 'lucide-react';
+import { Edit, Trash2 } from 'lucide-react';
 import { Announcement } from '../../types';
 
 interface AnnouncementCardProps {
@@ -57,38 +57,13 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({ announcement, canEd
           <h4 className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">
             Details
           </h4>
-          <div className="text-gray-300 dark:text-gray-400 text-sm sm:text-base leading-relaxed flex flex-wrap gap-x-6 gap-y-2">
+          <div className="text-gray-300 dark:text-gray-400 text-sm sm:text-base leading-relaxed space-y-2">
             <p><span className="font-medium">Title:</span> {announcement.title}</p>
             <p><span className="font-medium">Description:</span> {announcement.content}</p>
-            <p><span className="font-medium">Venue:</span> {announcement.venue || 'Not specified'}</p>
-            <p><span className="font-medium">Time:</span> {announcement.time || 'Not specified'}</p>
-            <p><span className="font-medium">Length:</span> {announcement.length || 'Not specified'}</p>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-600 dark:border-gray-700">
-          <div className="flex items-center space-x-2">
-            <User className="h-4 w-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-            <div>
-              <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
-                Posted by
-              </p>
-              <p className="text-sm text-gray-300 dark:text-gray-400 truncate">
-                {announcement.createdBy}
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-            <div>
-              <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">
-                Date
-              </p>
-              <p className="text-sm text-gray-300 dark:text-gray-400">
-                {announcement.createdAt.toLocaleDateString()}
-              </p>
-            </div>
+            <p>
+              <span className="font-medium">Date:</span> {announcement.createdAt.toLocaleDateString()}
+              <span className="ml-6 font-medium">Venue:</span> {announcement.venue || 'Not specified'}
+            </p>
           </div>
         </div>
       </div>
