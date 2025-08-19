@@ -79,32 +79,32 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({
           </p>
         </div>
 
-        {/* Venue, Date & Time - NEW SECTION UNDER DESCRIPTION */}
-        <div className="mt-3 space-y-2">
-          {announcement.venue && (
-            <div className="flex items-center space-x-2">
-              <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                {announcement.venue}
-              </p>
-            </div>
-          )}
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              {announcement.createdAt.toLocaleDateString()}
-            </p>
+        {/* NEW LINE: Event Date, Time & Venue entered by user */}
+        {(announcement.eventDate || announcement.eventTime || announcement.venue) && (
+          <div className="flex items-center text-sm text-gray-700 dark:text-gray-300 space-x-2">
+            {announcement.eventDate && (
+              <span className="flex items-center space-x-1">
+                <Calendar className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                <span>{announcement.eventDate}</span>
+              </span>
+            )}
+            {announcement.eventTime && (
+              <span className="flex items-center space-x-1">
+                <Clock className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                <span>{announcement.eventTime}</span>
+              </span>
+            )}
+            {announcement.venue && (
+              <span className="flex items-center space-x-1">
+                <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                <span>{announcement.venue}</span>
+              </span>
+            )}
           </div>
-          <div className="flex items-center space-x-2">
-            <Clock className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              {announcement.createdAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </p>
-          </div>
-        </div>
+        )}
 
-        {/* Footer with Posted by */}
-        <div className="pt-3 border-t border-gray-200 dark:border-gray-600">
+        {/* Footer with Posted By & Created Date (kept same as before) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-gray-200 dark:border-gray-600">
           <div className="flex items-center space-x-2">
             <User className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
             <div>
@@ -113,6 +113,18 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({
               </p>
               <p className="text-sm text-gray-700 dark:text-gray-300 truncate">
                 {announcement.createdBy}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            <Calendar className="h-4 w-4 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                Created At
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {announcement.createdAt.toLocaleDateString()}
               </p>
             </div>
           </div>
