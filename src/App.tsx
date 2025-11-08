@@ -4,7 +4,6 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
-import WelcomeAnimation from './components/WelcomeAnimation';
 import SeniorDashboard from './components/Dashboard/SeniorDashboard';
 import JuniorDashboard from './components/Dashboard/JuniorDashboard';
 import TaskManager from './components/Tasks/TaskManager';
@@ -30,7 +29,6 @@ const AppContent: React.FC = () => {
   return (
     <ThemeProvider>
       <Router>
-        <WelcomeAnimation />
         <div className="min-h-screen bg-gray-900 dark:bg-gray-900 bg-gray-50 transition-colors duration-300">
           <Navbar />
           <main>
