@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOut, Users, Home, CheckSquare, MessageSquare, UserCheck, GraduationCap } from 'lucide-react';
+import { LogOut, Users, Home, CheckSquare, MessageSquare, UserCheck, GraduationCap, Activity } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -16,6 +16,7 @@ const Navbar: React.FC = () => {
   const isUserSenior = currentUser?.role && ['EB', 'EC', 'Core'].includes(currentUser.role);
   const navItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
+    { path: '/analytics', icon: Activity, label: 'Analytics' },
     { path: '/tasks', icon: CheckSquare, label: 'Tasks' },
     { path: '/academics', icon: GraduationCap, label: 'Academics' },
     { path: '/feedback', icon: MessageSquare, label: 'Feedback' },

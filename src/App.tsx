@@ -10,6 +10,7 @@ import TaskManager from './components/Tasks/TaskManager';
 import FeedbackForm from './components/Feedback/FeedbackForm';
 import AttendanceTracker from './components/Attendance/AttendanceTracker';
 import AcademicsSection from './components/Academics/AcademicsSection';
+import UserAnalyticsDashboard from './components/Analytics/UserAnalyticsDashboard';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
@@ -55,6 +56,11 @@ const AppContent: React.FC = () => {
               <Route path="/attendance" element={
                 <ProtectedRoute>
                   <AttendanceTracker />
+                </ProtectedRoute>
+              } />
+              <Route path="/analytics" element={
+                <ProtectedRoute>
+                  <UserAnalyticsDashboard />
                 </ProtectedRoute>
               } />
               <Route path="*" element={<Navigate to="/" />} />
