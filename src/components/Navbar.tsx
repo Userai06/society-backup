@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOut, Users, Home, CheckSquare, MessageSquare, UserCheck, GraduationCap, Activity } from 'lucide-react';
+import { LogOut, Users, Home, CheckSquare, MessageSquare, UserCheck, GraduationCap, Activity, User } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -61,13 +61,22 @@ const Navbar: React.FC = () => {
           
           {currentUser && (
             <div className="flex items-center space-x-2 sm:space-x-4">
-              <div className="hidden sm:flex items-center space-x-2">
-                <span className="text-xs sm:text-sm text-gray-300 dark:text-gray-300 text-gray-600 truncate max-w-32 sm:max-w-none">Welcome, {currentUser.name}</span>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRoleColor(currentUser.role)}`}>
-                  {currentUser.role}
-                </span>
-              </div>
-              <div className="sm:hidden">
+              <Link
+                to="/profile"
+                className="flex items-center space-x-2 px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-300 dark:text-gray-300 text-gray-600 hover:text-white dark:hover:text-white hover:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+              >
+                {currentUser.photoUrl ? (
+                  <img
+                    src={currentUser.photoUrl}
+                    alt={currentUser.name}
+                    className="h-6 w-6 rounded-full object-cover ring-2 ring-blue-500"
+                  />
+                ) : (
+                  <User className="h-4 w-4" />
+                )}
+                <span className="hidden sm:inline">{currentUser.name}</span>
+              </Link>
+              <div className="hidden sm:flex items-center">
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRoleColor(currentUser.role)}`}>
                   {currentUser.role}
                 </span>

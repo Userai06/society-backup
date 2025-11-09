@@ -3,7 +3,9 @@ export interface User {
   email: string;
   role: 'EB' | 'EC' | 'Core' | 'Member';
   name: string;
+  photoUrl?: string;
   createdAt: Date;
+  updatedAt?: Date;
 }
 
 export interface Event {
